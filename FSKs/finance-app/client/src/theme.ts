@@ -48,9 +48,9 @@ export const tokens = {
 export const themeSettings = {
   palette: {
     primary: {
-      ...tokens.primary,
       main: tokens.primary[500],
       light: tokens.primary[400],
+      ...tokens.primary,
     },
     secondary: {
       ...tokens.secondary,

@@ -7,6 +7,7 @@ import Dashboard from "./pages/Dashboard";
 
 function App() {
   const theme = useMemo(() => createTheme(), []);
+  console.log(theme, "theme");
 
   return (
     <div className="app">
