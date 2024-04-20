@@ -1,6 +1,6 @@
 import Tilt from "react-parallax-tilt";
 import { TCommonProps } from "../types";
-import { backend, creator, web } from "../assets";
+import { ds, creator, web } from "../assets";
 import { motion } from "framer-motion";
 import { fadeIn } from "../utils";
 import { config } from "../constants/config";
@@ -15,8 +15,8 @@ const services: TService[] = [
     icon: web,
   },
   {
-    title: "Backend Developer",
-    icon: backend,
+    title: "Data Scientist",
+    icon: ds,
   },
   {
     title: "Content Creator",
