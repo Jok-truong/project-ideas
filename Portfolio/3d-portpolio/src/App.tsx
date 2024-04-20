@@ -5,6 +5,8 @@ import About from "./components/About";
 import Experience from "./components/Experience";
 import Tech from "./components/Tech";
 import Works from "./components/Works";
+import Contact from "./components/Contact";
+import StarsCanvas from "./components/canvas/StarsCanvas";
 
 function App() {
   return (
@@ -18,6 +20,10 @@ function App() {
         <Experience />
         <Tech />
         <Works />
+        <div className="relative z-0">
+          <Contact />
+          <StarsCanvas />
+        </div>
       </div>
     </BrowserRouter>
   );

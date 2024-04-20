@@ -42,7 +42,7 @@ export const config: TConfig = {
   html: {
     title: "3D Portfolio",
     fullName: "Huy Truong",
-    email: "johndoe@mail.com",
+    email: import.meta.env.VITE_EMAIL,
   },
   hero: {
     name: "Huy Truong",
