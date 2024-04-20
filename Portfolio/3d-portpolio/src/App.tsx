@@ -2,6 +2,9 @@ import { BrowserRouter } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import HeroBanner from "./components/HeroBanner";
 import About from "./components/About";
+import Experience from "./components/Experience";
+import Tech from "./components/Tech";
+import Works from "./components/Works";
 
 function App() {
   return (
@@ -12,6 +15,9 @@ function App() {
           <HeroBanner />
         </div>
         <About />
+        <Experience />
+        <Tech />
+        <Works />
       </div>
     </BrowserRouter>
   );

@@ -1,4 +1,4 @@
-import Computers from "../canvas/Computers";
+import Computers from "./canvas/Computers";
 import { config } from "../constants/config";
 import { motion } from "framer-motion";
 
