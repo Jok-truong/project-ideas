@@ -2,6 +2,7 @@ import express from 'express'
 import dotenv from 'dotenv'
 import mongoose from 'mongoose'
 import cors from 'cors'
+import { apiRouter } from './routes'
 
 dotenv.config()
 
@@ -24,6 +25,11 @@ mongoose
 const startSever = async () => {
   const app = express()
   app.use(cors())
+
+  // Enable req.body data
+  app.use(express.json())
+
+  app.use('/', apiRouter)
 
   app.listen(PORT, () => {
     console.log(`server started on http://localhost:${PORT}`)

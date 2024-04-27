@@ -15,6 +15,8 @@ interface INavItemInfo {
 const navItemsInfo: INavItemInfo[] = [
   { name: "Home", type: "link", href: "/" },
   { name: "Blog", type: "link", href: "/blog" },
+  { name: "Pricing", type: "link", href: "/pricing" },
+  { name: "Faq", type: "link", href: "/faq" },
   {
     name: "Pages",
     type: "dropdown",
@@ -23,8 +25,6 @@ const navItemsInfo: INavItemInfo[] = [
       { title: "Contact us", href: "/contact" },
     ],
   },
-  { name: "Pricing", type: "link", href: "/pricing" },
-  { name: "Faq", type: "link", href: "/faq" },
 ];
 
 const NavItem = ({ item }: { item: INavItemInfo }) => {
@@ -75,7 +75,7 @@ const NavItem = ({ item }: { item: INavItemInfo }) => {
 const Navbar = ({ navIsVisible }: { navIsVisible: boolean }) => {
   return (
     <div
-      className={`transition-all duration-300 mt-[56px] lg:mt-0 bg-dark-hard lg:bg-transparent z-[49] flex flex-col w-full lg:w-auto justify-center lg:justify-end lg:flex-row fixed top-0 bottom-0 lg:static gap-x-9 items-center
+      className={`transition-all duration-300 mt-[56px] lg:mt-0 bg-[##cef2f7] lg:bg-transparent z-[49] flex flex-col w-full lg:w-auto justify-center lg:justify-end lg:flex-row fixed top-0 bottom-0 lg:static gap-x-9 items-center
           ${navIsVisible ? "right-0" : "-right-full"}
           `}
     >

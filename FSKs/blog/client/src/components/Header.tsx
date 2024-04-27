@@ -4,17 +4,23 @@ import { useState } from "react";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import Navbar from "./Navbar";
 import { MdKeyboardArrowDown } from "react-icons/md";
+import { useSelector } from "react-redux";
+import { IUser } from "../types/user";
+import { logout } from "../store/actions/user";
+import { useAppDispatch } from "../hooks";
 
 const Header = () => {
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
 
   const [navIsVisible, setNavIsVisible] = useState(false);
-  const [userInfo, setUserInfo] = useState<{ admin: boolean } | null>();
   const [profileDropdown, setProfileDropdown] = useState(false);
+  const userState = useSelector((state: IUser) => state.user);
+  console.log(userState, "userState");
 
-  console.log(profileDropdown, "profileDropdown");
-
-  const logoutHandler = () => {};
+  const logoutHandler = () => {
+    dispatch(logout());
+  };
 
   return (
     <section className="sticky top-0 left-0 ring-0 z-50 bg-white">
@@ -38,7 +44,7 @@ const Header = () => {
 
         <Navbar navIsVisible={navIsVisible} />
 
-        {userInfo ? (
+        {userState.userInfo ? (
           <div className="text-white items-center gap-y-5 lg:text-dark-soft flex flex-col lg:flex-row gap-x-2 font-semibold">
             <div className="relative group">
               <div className="flex flex-col items-center">
@@ -56,7 +62,7 @@ const Header = () => {
                   `}
                 >
                   <ul className="bg-dark-soft lg:bg-transparent text-center flex flex-col shadow-lg rounded-lg overflow-hidden">
-                    {
+                    {userState?.userInfo?.admin && (
                       <button
                         onClick={() => navigate("/admin")}
                         type="button"
@@ -64,7 +70,7 @@ const Header = () => {
                       >
                         Admin Dashboard
                       </button>
-                    }
+                    )}
 
                     <button
                       onClick={() => navigate("/profile")}
@@ -90,7 +96,7 @@ const Header = () => {
             onClick={() => navigate("/login")}
             className="mt-5 lg:mt-0 border-2 border-blue-500 px-6 py-2 rounded-full text-blue-500 font-semibold hover:bg-blue-500 hover:text-white transition-all duration-300"
           >
-            Sign in
+            Login
           </button>
         )}
       </header>
