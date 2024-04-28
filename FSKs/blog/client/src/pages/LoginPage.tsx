@@ -19,7 +19,6 @@ const LoginPage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const userState = useSelector((state: IUser) => state.user);
-  console.log(userState, "userState");
 
   const { mutate, isLoading } = useMutation({
     mutationFn: ({ email, password }: ILoginInput) => {
