@@ -3,6 +3,7 @@ import dotenv from 'dotenv'
 import mongoose from 'mongoose'
 import cors from 'cors'
 import { apiRouter } from './routes'
+import path from 'path'
 
 dotenv.config()
 
@@ -30,6 +31,9 @@ const startSever = async () => {
   app.use(express.json())
 
   app.use('/', apiRouter)
+
+  // static assets
+  app.use('/uploads', express.static(path.join(__dirname, '/uploads')))
 
   app.listen(PORT, () => {
     console.log(`server started on http://localhost:${PORT}`)

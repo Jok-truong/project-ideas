@@ -17,7 +17,7 @@ import ProfilePage from "./pages/profile/ProfilePage";
 const Layout = () => {
   return (
     <>
-      <Outlet />;
+      <Outlet />
       <Toaster />
     </>
   );
