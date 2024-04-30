@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import images from "../../../constants/images";
+import images from "../../../../constants/images";
 import { useState } from "react";
 import { AiFillDashboard, AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 import { FaComments, FaUser } from "react-icons/fa";

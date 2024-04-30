@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form";
 import MainLayout from "../components/MainLayout";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { IUser } from "../types/user";
+import { TUserState } from "../types/user";
 import { useEffect } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { userActions } from "../store/reducers/userReducers";
@@ -18,7 +18,7 @@ type ILoginInput = {
 const LoginPage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const userState = useSelector((state: IUser) => state.user);
+  const userState = useSelector((state: TUserState) => state.user);
 
   const { mutate, isLoading } = useMutation({
     mutationFn: ({ email, password }: ILoginInput) => {

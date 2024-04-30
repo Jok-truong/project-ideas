@@ -106,3 +106,30 @@ export const updateProfilePicture = async ({
     throw new Error(error.message);
   }
 };
+
+export const getAllUsers = async (
+  token: string,
+  searchKeyword = "",
+  page = 1,
+  limit = 10
+) => {
+  try {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
+
+    const { data } = await axios.get(
+      `${
+        import.meta.env.VITE_BASE_URL
+      }/users?searchKeyword=${searchKeyword}&page=${page}&limit=${limit}`,
+      config
+    );
+    return { data };
+  } catch (error) {
+    if (error.response && error.response.data.message)
+      throw new Error(error.response.data.message);
+    throw new Error(error.message);
+  }
+};

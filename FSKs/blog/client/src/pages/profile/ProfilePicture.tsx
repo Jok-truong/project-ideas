@@ -4,7 +4,7 @@ import { HiOutlineCamera } from "react-icons/hi";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { updateProfilePicture } from "../../services/users";
 import { useSelector } from "react-redux";
-import { IUser } from "../../types/user";
+import { TUserState } from "../../types/user";
 import toast from "react-hot-toast";
 import CropEasy from "./CropEasy";
 import { createPortal } from "react-dom";
@@ -17,7 +17,7 @@ const ProfilePicture = ({ avatar }: { avatar: string }) => {
   const queryClient = useQueryClient();
   const [openCrop, setOpenCrop] = useState(false);
   const [photo, setPhoto] = useState<IPhoto>(undefined);
-  const userState = useSelector((state: IUser) => state.user);
+  const userState = useSelector((state: TUserState) => state.user);
   const dispatch = useAppDispatch();
 
   const { mutate } = useMutation({

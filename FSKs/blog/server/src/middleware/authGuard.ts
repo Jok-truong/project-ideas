@@ -31,3 +31,13 @@ export const authGuard = async (req: Request, res: Response, next: NextFunction)
     }
   }
 }
+
+export const adminGuard = async (req: Request, res: Response, next: NextFunction) => {
+  if (req.user && req.user.admin) {
+    next()
+  } else {
+    return res.status(401).json({
+      error: 'Not authorized as an admin'
+    })
+  }
+}

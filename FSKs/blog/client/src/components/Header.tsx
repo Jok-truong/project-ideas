@@ -5,7 +5,7 @@ import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import Navbar from "./Navbar";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { useSelector } from "react-redux";
-import { IUser } from "../types/user";
+import { TUserState } from "../types/user";
 import { logout } from "../store/actions/user";
 import { useAppDispatch } from "../hooks";
 
@@ -15,7 +15,7 @@ const Header = () => {
 
   const [navIsVisible, setNavIsVisible] = useState(false);
   const [profileDropdown, setProfileDropdown] = useState(false);
-  const userState = useSelector((state: IUser) => state.user);
+  const userState = useSelector((state: TUserState) => state.user);
   console.log(userState, "userState");
 
   const logoutHandler = () => {

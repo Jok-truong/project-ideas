@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import MainLayout from "../../components/MainLayout";
-import { IUser } from "../../types/user";
+import { TUserState } from "../../types/user";
 import { useForm } from "react-hook-form";
 import ProfilePicture from "./ProfilePicture";
 import { getUserProfile, updateProfile } from "../../services/users";
@@ -20,7 +20,7 @@ type IUpdateProfileInput = {
 const ProfilePage = () => {
   const dispatch = useAppDispatch();
   const queryClient = useQueryClient();
-  const userState = useSelector((state: IUser) => state.user);
+  const userState = useSelector((state: TUserState) => state.user);
 
   const { data: profileData, isLoading: profileIsLoading } = useQuery({
     queryFn: () => {

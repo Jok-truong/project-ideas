@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 
 import { userReducer } from "./reducers/userReducers.ts";
-import { IUser } from "../types/user.ts";
+import { TUserState } from "../types/user.ts";
 
 const userInfoFromStorage = () => {
   const storedData = localStorage.getItem("account");
@@ -11,7 +11,7 @@ const userInfoFromStorage = () => {
   return JSON.parse(storedData);
 };
 
-const initialState: IUser = {
+const initialState: TUserState = {
   user: { userInfo: userInfoFromStorage() },
 };
 

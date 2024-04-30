@@ -97,7 +97,7 @@ export const userProfile = async (req: Request, res: Response, next: NextFunctio
 export const updateProfile = async (req: Request, res: Response) => {
   try {
     const userIdToUpdate = req.params.userId
-    const userId = req.user._id
+    const userId = String(req.user._id)
 
     if (!req.user.admin && userId !== userIdToUpdate) {
       return res.status(403).json({
@@ -142,7 +142,7 @@ export const updateProfile = async (req: Request, res: Response) => {
   }
 }
 
-export const updateProfilePicture = async (req: Request, res: Response, next: NextFunction) => {
+export const updateProfilePicture = async (req: Request, res: Response) => {
   try {
     const upload = uploadPicture.single('profilePicture')
 
@@ -187,6 +187,43 @@ export const updateProfilePicture = async (req: Request, res: Response, next: Ne
             })
           }
         }
+      }
+    })
+  } catch (error) {
+    return res.status(500).json({
+      error: error.message
+    })
+  }
+}
+
+export const getAllUsers = async (req: Request, res: Response) => {
+  try {
+    const filter = req.query['searchKeyword']
+    const where: any = {}
+    if (filter) {
+      where.email = { $regex: filter, $options: 'i' }
+    }
+
+    const query = User.find(where)
+    const page: number = !isNaN(Number(req.query.page)) ? Number(req.query.page) : 1
+    const pageSize: number = !isNaN(Number(req.query.limit)) ? Number(req.query.limit) : 10
+    const skip = (page - 1) * pageSize
+    const total = await User.find(where).countDocuments()
+    const pages = Math.ceil(total / pageSize)
+
+    if (page > pages) {
+      return res.json([])
+    }
+    const result = await query.skip(skip).limit(pageSize).sort({ updatedAt: 'desc' })
+
+    return res.json({
+      users: result,
+      config: {
+        filter,
+        totalCount: JSON.stringify(total),
+        currentPage: JSON.stringify(page),
+        pagesize: JSON.stringify(pageSize),
+        totalPageCount: JSON.stringify(pages)
       }
     })
   } catch (error) {

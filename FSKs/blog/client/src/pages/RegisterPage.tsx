@@ -3,7 +3,7 @@ import MainLayout from "../components/MainLayout";
 import { useForm } from "react-hook-form";
 import { REGEX_EMAIL } from "../constants/regex";
 import { useDispatch, useSelector } from "react-redux";
-import { IUser } from "../types/user";
+import { TUserState } from "../types/user";
 import { useMutation } from "@tanstack/react-query";
 import { signup } from "../services/users";
 import { userActions } from "../store/reducers/userReducers";
@@ -21,7 +21,7 @@ type IRegisterInput = {
 const RegisterPage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const userState = useSelector((state: IUser) => state.user);
+  const userState = useSelector((state: TUserState) => state.user);
 
   const { mutate, isLoading } = useMutation({
     mutationFn: ({

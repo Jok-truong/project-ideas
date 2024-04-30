@@ -2,7 +2,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import Cropper, { Area } from "react-easy-crop";
 import { useAppDispatch } from "../../hooks";
 import { useSelector } from "react-redux";
-import { IUser } from "../../types/user";
+import { TUserState } from "../../types/user";
 import { useState } from "react";
 import { IPhoto } from "./ProfilePicture";
 import toast from "react-hot-toast";
@@ -19,7 +19,7 @@ function CropEasy({
 }) {
   const queryClient = useQueryClient();
   const dispatch = useAppDispatch();
-  const userState = useSelector((state: IUser) => state.user);
+  const userState = useSelector((state: TUserState) => state.user);
   const [crop, setCrop] = useState({ x: 0, y: 0 });
   const [zoom, setzoom] = useState(1);
   const [croppedAreaPixels, setCroppedAreaPixels] = useState<Area | null>(null);
