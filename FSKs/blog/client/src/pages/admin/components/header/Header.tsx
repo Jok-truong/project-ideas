@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import images from "../../../../constants/images";
 import { useState } from "react";
 import { AiFillDashboard, AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
@@ -6,14 +6,48 @@ import { FaComments, FaUser } from "react-icons/fa";
 import NavItem from "./NavItem";
 import NavItemCollapse from "./NavItemCollapse";
 import { MdDashboard } from "react-icons/md";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { createPost } from "../../../../services/post";
+import { useAppSelector } from "../../../../hooks";
+import toast from "react-hot-toast";
+import { TUserState } from "../../../../types/user";
 
 const Header = () => {
+  const navigate = useNavigate();
+  const userState = useAppSelector((state: TUserState) => state.user);
+  const queryClient = useQueryClient();
+
   const [isMenuActive, setIsMenuActive] = useState(false);
   const [activeNavName, setActiveNavName] = useState("dashboard");
+
+  const { mutate: mutateCreatePost, isPending: isPendingCreatePost } =
+    useMutation({
+      mutationFn: ({ token }: { token: string }) => {
+        return createPost({
+          token,
+        });
+      },
+
+      onSuccess: (data) => {
+        queryClient.invalidateQueries({ queryKey: ["posts"] });
+        toast.success("Post is created, edit that now!");
+        navigate(`/admin/posts/manage/edit/${data.slug}`);
+      },
+
+      onError: (error) => {
+        toast.error(error.message);
+        console.log(error);
+      },
+    });
 
   const toggleMenuHandler = () => {
     setIsMenuActive((prevState) => !prevState);
   };
+
+  const handleCreateNewPost = ({ token }: { token: string }) => {
+    mutateCreatePost({ token });
+  };
+
   return (
     <header className="flex h-fit w-full items-center justify-between p-4 lg:h-full lg:max-w-[300px] lg:flex-col lg:items-start lg:justify-start lg:p-0 ">
       <Link to="/">
@@ -80,13 +114,13 @@ const Header = () => {
               Manage all posts
             </Link>
             <button
-              // disabled={isLoadingCreatePost}
+              disabled={isPendingCreatePost}
               className="
               font-normal text-[#A5A5A5] flex items-center gap-x-2 py-2 text-lg
               text-start disabled:opacity-60 disabled:cursor-not-allowed"
-              // onClick={() =>
-              //   handleCreateNewPost({ token: userState.userInfo.token })
-              // }
+              onClick={() =>
+                handleCreateNewPost({ token: userState?.userInfo?.token })
+              }
             >
               Add New Post
             </button>

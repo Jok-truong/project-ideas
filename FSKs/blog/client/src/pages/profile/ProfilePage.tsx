@@ -3,7 +3,7 @@ import MainLayout from "../../components/MainLayout";
 import { TUserState } from "../../types/user";
 import { useForm } from "react-hook-form";
 import ProfilePicture from "./ProfilePicture";
-import { getUserProfile, updateProfile } from "../../services/users";
+import { getUserProfile, updateProfile } from "../../services/user";
 import { useMemo } from "react";
 import { useAppDispatch } from "../../hooks";
 import { userActions } from "../../store/reducers/userReducers";

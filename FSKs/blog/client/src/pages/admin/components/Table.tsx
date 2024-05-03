@@ -16,7 +16,7 @@ type TableProps = {
   data: any;
   setCurrentPage: (value: number) => void;
   currentPage: number;
-  config: any;
+  paginationConfig: any;
 };
 
 const Table = ({
@@ -33,10 +33,8 @@ const Table = ({
   data,
   setCurrentPage,
   currentPage,
-  config,
+  paginationConfig,
 }: TableProps) => {
-  console.log(config, "config");
-
   return (
     <>
       <h1 className="text-2xl font-semibold">{pageTitle}</h1>
@@ -110,7 +108,7 @@ const Table = ({
                 <Pagination
                   onPageChange={(page) => setCurrentPage(page)}
                   currentPage={currentPage}
-                  totalPageCount={config?.totalPageCount}
+                  totalPageCount={paginationConfig?.totalPageCount}
                 />
               )}
             </div>

@@ -7,7 +7,7 @@ import { useState } from "react";
 import { IPhoto } from "./ProfilePicture";
 import toast from "react-hot-toast";
 import { userActions } from "../../store/reducers/userReducers";
-import { updateProfilePicture } from "../../services/users";
+import { updateProfilePicture } from "../../services/user";
 import getCroppedImg from "../../services/crop";
 
 function CropEasy({

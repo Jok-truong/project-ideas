@@ -55,12 +55,10 @@ const routes: RouteObject[] = [
           {
             element: <ManagePosts />,
             path: "posts/manage",
-            children: [
-              {
-                element: <EditPost />,
-                path: "edit/::slug",
-              },
-            ],
+          },
+          {
+            element: <EditPost />,
+            path: "posts/edit/:slug",
           },
           {
             element: <Categories />,

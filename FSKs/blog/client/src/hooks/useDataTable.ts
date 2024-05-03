@@ -1,13 +1,15 @@
-import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useEffect } from "react";
+import toast from "react-hot-toast";
 
 type Props = {
-  searchKeyword?: string;
   setSearchKeyword?: (value: string) => void;
   currentPage: number;
   setCurrentPage: (value: number) => void;
   queryFn: () => any;
   queryKey: string;
+  mutateDeleteFn?: ({ slug, token }: { slug: string; token: string }) => any;
+  deleteDataMessage?: string;
 };
 
 let isFirstRun = true;
@@ -18,6 +20,8 @@ export const useDataTable = ({
   setSearchKeyword,
   setCurrentPage,
   currentPage,
+  mutateDeleteFn,
+  deleteDataMessage = "",
 }: Props) => {
   const queryClient = useQueryClient();
 
@@ -25,6 +29,19 @@ export const useDataTable = ({
     queryFn: queryFn,
     queryKey: [queryKey],
   });
+
+  const { mutate: mutateDeletePost, isPending: isPendingDeleteData } =
+    useMutation({
+      mutationFn: mutateDeleteFn,
+      onSuccess: (_data) => {
+        queryClient.invalidateQueries({ queryKey: [queryKey] });
+        toast.success(deleteDataMessage);
+      },
+      onError: (error) => {
+        toast.error(error.message);
+        console.log(error);
+      },
+    });
 
   useEffect(() => {
     if (isFirstRun) {
@@ -44,6 +61,19 @@ export const useDataTable = ({
     setCurrentPage?.(1);
     refetch();
   };
+
+  const deleteDataHandler = ({
+    slug,
+    token,
+  }: {
+    slug: string;
+    token: string;
+  }) => {
+    if (window.confirm("Do you want to delete this record?")) {
+      mutateDeletePost({ slug, token });
+    }
+  };
+
   return {
     queryClient,
     data,
@@ -52,5 +82,7 @@ export const useDataTable = ({
     submitSearchKeywordHandler,
     searchKeywordHandler,
     currentPage,
+    deleteDataHandler,
+    isPendingDeleteData,
   };
 };

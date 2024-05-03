@@ -5,7 +5,7 @@ import { REGEX_EMAIL } from "../constants/regex";
 import { useDispatch, useSelector } from "react-redux";
 import { TUserState } from "../types/user";
 import { useMutation } from "@tanstack/react-query";
-import { signup } from "../services/users";
+import { signup } from "../services/user";
 import { userActions } from "../store/reducers/userReducers";
 import toast from "react-hot-toast";
 import { hasMessage } from "../utils";

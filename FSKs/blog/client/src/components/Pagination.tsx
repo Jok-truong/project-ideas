@@ -17,10 +17,6 @@ const Pagination = ({
     siblingCount,
     totalPageCount,
   });
-  console.log(totalPageCount, "totalPageCount");
-  console.log(currentPage, "currentPage");
-
-  console.log(paginationRange, "paginationRange");
 
   if (currentPage === 0 || (paginationRange && paginationRange.length < 2)) {
     return null;

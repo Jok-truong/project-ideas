@@ -8,7 +8,7 @@ import { useMutation } from "@tanstack/react-query";
 import { userActions } from "../store/reducers/userReducers";
 import { hasMessage } from "../utils";
 import toast from "react-hot-toast";
-import { login } from "../services/users";
+import { login } from "../services/user";
 
 type ILoginInput = {
   email: string;

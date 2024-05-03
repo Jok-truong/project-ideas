@@ -2,7 +2,7 @@ import { useState } from "react";
 import stables from "../../constants/stables";
 import { HiOutlineCamera } from "react-icons/hi";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { updateProfilePicture } from "../../services/users";
+import { updateProfilePicture } from "../../services/user";
 import { useSelector } from "react-redux";
 import { TUserState } from "../../types/user";
 import toast from "react-hot-toast";

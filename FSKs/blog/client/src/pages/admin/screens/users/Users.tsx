@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import { useDataTable } from "../../../../hooks/useDataTable";
-import { getAllUsers, updateProfile } from "../../../../services/users";
+import { getAllUsers, updateProfile } from "../../../../services/user";
 import Table from "../../components/Table";
 import { TUserState } from "../../../../types/user";
 import { useState } from "react";
@@ -32,7 +32,6 @@ const Users = () => {
     isLoading,
     isFetching,
   } = useDataTable({
-    searchKeyword,
     setSearchKeyword,
     currentPage,
     setCurrentPage,
@@ -56,7 +55,7 @@ const Users = () => {
           userId,
         });
       },
-      onSuccess: (data) => {
+      onSuccess: (_data) => {
         queryClient.invalidateQueries({ queryKey: ["users"] });
         toast.success("User is updated");
       },
@@ -80,7 +79,6 @@ const Users = () => {
       e.target.checked = initialCheckValue;
     }
   };
-  console.log(usersData, "usersData");
 
   return (
     <Table
@@ -103,7 +101,7 @@ const Users = () => {
       data={usersData?.data}
       setCurrentPage={setCurrentPage}
       currentPage={currentPage}
-      config={usersData?.data?.config}
+      paginationConfig={usersData?.data?.config}
     >
       {usersData?.data?.users?.map?.((user: TUser) => (
         <tr key={user._id}>
