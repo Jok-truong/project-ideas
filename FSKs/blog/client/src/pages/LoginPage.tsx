@@ -20,7 +20,7 @@ const LoginPage = () => {
   const dispatch = useDispatch();
   const userState = useSelector((state: TUserState) => state.user);
 
-  const { mutate, isLoading } = useMutation({
+  const { mutate, isPending } = useMutation({
     mutationFn: ({ email, password }: ILoginInput) => {
       return login<ILoginInput>({ email, password });
     },
@@ -138,7 +138,7 @@ const LoginPage = () => {
             </Link>
             <button
               type="submit"
-              disabled={!isValid || isLoading}
+              disabled={!isValid || isPending}
               className="bg-primary text-white font-bold text-lg py-4 px-8 w-full rounded-lg my-6 disabled:opacity-70 disabled:cursor-not-allowed"
             >
               Login

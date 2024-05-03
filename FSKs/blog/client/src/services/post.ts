@@ -1,6 +1,12 @@
 import axios from "axios";
 
-export const createPost = async ({ token }: { token: string }) => {
+export const createPost = async <T>({
+  token,
+  dataForm,
+}: {
+  token: string;
+  dataForm: T;
+}) => {
   try {
     const config = {
       headers: {
@@ -10,7 +16,7 @@ export const createPost = async ({ token }: { token: string }) => {
 
     const { data } = await axios.post(
       `${import.meta.env.VITE_BASE_URL}/posts`,
-      {},
+      dataForm,
       config
     );
     return data;

@@ -6,9 +6,11 @@ import { fileRemover } from '~/utils/fileRemover'
 
 export const createPost = async (req: Request, res: Response) => {
   try {
+    const { title, caption } = req.body
+
     const post = new Post({
-      title: 'sample title',
-      caption: 'sample caption',
+      title: title,
+      caption: caption,
       slug: uuidv4(),
       body: {
         type: 'doc',

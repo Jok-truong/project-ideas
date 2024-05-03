@@ -1,4 +1,7 @@
+import { useState } from "react";
 import Pagination from "../../../components/Pagination";
+import { createPortal } from "react-dom";
+import UpsertForm from "../../../components/CreationForm";
 
 type TableProps = {
   children: React.ReactNode;
@@ -17,6 +20,7 @@ type TableProps = {
   setCurrentPage: (value: number) => void;
   currentPage: number;
   paginationConfig: any;
+  titleForm?: string;
 };
 
 const Table = ({
@@ -34,9 +38,17 @@ const Table = ({
   setCurrentPage,
   currentPage,
   paginationConfig,
+  titleForm,
 }: TableProps) => {
+  const [openForm, setOpenForm] = useState(false);
+
   return (
     <>
+      {openForm &&
+        createPortal(
+          <UpsertForm title={titleForm ?? ""} setOpenForm={setOpenForm} />,
+          document.getElementById("portal") as HTMLElement
+        )}
       <h1 className="text-2xl font-semibold">{pageTitle}</h1>
 
       <div className="w-full px-4 mx-auto">
@@ -63,6 +75,13 @@ const Table = ({
                   type="submit"
                 >
                   Filter
+                </button>
+                <button
+                  className="flex-shrink-0 px-4 py-2 text-base font-semibold text-white bg-purple-600 rounded-lg shadow-md hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-purple-200"
+                  type="button"
+                  onClick={() => setOpenForm(true)}
+                >
+                  Create Post
                 </button>
               </form>
             </div>
