@@ -16,7 +16,6 @@ const Header = () => {
   const [navIsVisible, setNavIsVisible] = useState(false);
   const [profileDropdown, setProfileDropdown] = useState(false);
   const userState = useSelector((state: TUserState) => state.user);
-  console.log(userState, "userState");
 
   const logoutHandler = () => {
     dispatch(logout());

@@ -1,6 +1,8 @@
 import { Request, Response } from 'express'
 import Post from '~/models/Post'
 import { v4 as uuidv4 } from 'uuid'
+import { uploadPicture } from '~/middleware/uploadPictureMiddleware'
+import { fileRemover } from '~/utils/fileRemover'
 
 export const createPost = async (req: Request, res: Response) => {
   try {
@@ -23,6 +25,75 @@ export const createPost = async (req: Request, res: Response) => {
     })
   }
 }
+export const updatePost = async (req: Request, res: Response) => {
+  try {
+    const post = await Post.findOne({ slug: req.params.slug })
+    if (!post) {
+      throw Error('Post was not found')
+    }
+
+    const handleUpdatePostData = async (data: string) => {
+      const { title, caption, body, tags, categories } = JSON.parse(data)
+
+      post.title = title || post.title
+      post.caption = caption || post.caption
+      post.body = body || post.body
+      post.tags = tags || post.tags
+      post.categories = categories || post.categories
+      const updatedPost = await post.save()
+      return res.json(updatedPost)
+    }
+    const upload = uploadPicture.single('postPicture')
+    upload(req, res, async function (err) {
+      if (err) {
+        return res.status(500).json({
+          error: 'An unknown error occurred when uploading ' + err.message
+        })
+      } else {
+        if (req.file) {
+          const filename = post.photo
+          if (filename) {
+            fileRemover(filename)
+          }
+          post.photo = req.file.filename
+          handleUpdatePostData(String(req.body.document))
+        } else {
+          const filename = post.photo
+          post.photo = ''
+          if (filename) {
+            fileRemover(filename)
+          }
+          handleUpdatePostData(String(req.body.document))
+        }
+      }
+    })
+  } catch (error) {
+    return res.status(500).json({
+      error: error.message
+    })
+  }
+}
+
+export const getPost = async (req: Request, res: Response) => {
+  try {
+    const post = await Post.findOne({ slug: req.params.slug }).populate([
+      {
+        path: 'user',
+        select: ['avatar', 'name']
+      }
+    ])
+
+    if (!post) {
+      throw Error('Post was not found')
+    }
+    return res.json(post)
+  } catch (error) {
+    return res.status(500).json({
+      error: error.message
+    })
+  }
+}
+
 export const getAllPosts = async (req: Request, res: Response) => {
   try {
     const filter = req.query['searchKeyword']
