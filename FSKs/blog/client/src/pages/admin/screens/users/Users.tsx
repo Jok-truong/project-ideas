@@ -98,7 +98,7 @@ const Users = () => {
       ]}
       isLoading={isLoading}
       isFetching={isFetching}
-      data={usersData?.data}
+      data={usersData?.data?.users}
       setCurrentPage={setCurrentPage}
       currentPage={currentPage}
       paginationConfig={usersData?.data?.config}

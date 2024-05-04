@@ -82,6 +82,10 @@ export const getPost = async (req: Request, res: Response) => {
       {
         path: 'user',
         select: ['avatar', 'name']
+      },
+      {
+        path: 'categories',
+        select: ['title']
       }
     ])
 
@@ -121,6 +125,10 @@ export const getAllPosts = async (req: Request, res: Response) => {
         {
           path: 'user',
           select: ['avatar', 'name', 'verified']
+        },
+        {
+          path: 'categories',
+          select: ['title']
         }
       ])
       .sort({ updatedAt: 'desc' })

@@ -42,7 +42,7 @@ const Editor = ({ onDataChange, content, editable }: EditorProps) => {
   });
 
   return (
-    <div className="w-full relative">
+    <div className="w-full relative ">
       {editable && <MenuBar editor={editor} />}
       <EditorContent
         className="p-5 pt-0 border rounded-lg my-5"

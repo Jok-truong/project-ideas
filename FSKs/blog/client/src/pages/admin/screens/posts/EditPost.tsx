@@ -1,7 +1,7 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import { getSinglePost, updatePost } from "../../../../services/post";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import stables from "../../../../constants/stables";
 import { HiOutlineCamera } from "react-icons/hi";
 import CreatableSelect from "react-select/creatable";
@@ -11,6 +11,19 @@ import { TUserState } from "../../../../types/user";
 import toast from "react-hot-toast";
 import ArticleDetailSkeleton from "../../../articleDetail/components/ArticleDetailSkeleton";
 import ErrorMessage from "../../../../components/ErrorMessage";
+import MultiSelectTagDropdown from "../../components/select-dropdown/MultiSelectTagDropdown";
+import { getAllCategories } from "../../../../services/postCategories";
+import { categoryToOption, filterCategories } from "../../../../utils";
+import { TCategoryOption } from "../../../../types/postCategories";
+
+const promiseOptions = async (inputValue: string) => {
+  const {
+    data: { categories },
+  } = await getAllCategories();
+  console.log(categories, "categories");
+
+  return filterCategories(inputValue, categories);
+};
 
 const EditPost = () => {
   const { slug } = useParams();
@@ -24,6 +37,7 @@ const EditPost = () => {
   const [title, setTitle] = useState("");
   const [tags, setTags] = useState<null | string[]>(null);
   const [caption, setCaption] = useState("");
+  const [categories, setCategories] = useState<null | string[]>(null);
 
   const { data, isLoading, isError, isSuccess } = useQuery({
     queryFn: () => slug && getSinglePost({ slug: slug }),
@@ -48,10 +62,10 @@ const EditPost = () => {
           token,
         });
       },
-      onSuccess: (data) => {
+      onSuccess: (_data) => {
         queryClient.invalidateQueries({ queryKey: ["blog", slug] });
         toast.success("Post is updated");
-        navigate(`/admin/posts/edit/${data.slug}`, { replace: true });
+        navigate(`/admin/posts/manage`, { replace: true });
       },
       onError: (error) => {
         toast.error(error.message);
@@ -100,7 +114,7 @@ const EditPost = () => {
 
     updatedData.append(
       "document",
-      JSON.stringify({ body, title, tags, caption })
+      JSON.stringify({ body, categories, title, tags, caption })
     );
 
     mutateUpdatePostDetail({
@@ -153,7 +167,16 @@ const EditPost = () => {
             >
               Delete Image
             </button>
-
+            <div className="mt-4 flex gap-2">
+              {data?.categories?.map((category: { name: string }) => (
+                <Link
+                  to={`/blog?category=${category.name}`}
+                  className="text-primary text-sm font-roboto inline-block md:text-base"
+                >
+                  {category.name}
+                </Link>
+              ))}
+            </div>
             <div className="d-form-control w-full">
               <label className="d-label" htmlFor="title">
                 <span className="d-label-text">Title</span>
@@ -179,6 +202,21 @@ const EditPost = () => {
               />
             </div>
 
+            <div className="d-form-control w-full">
+              <label className="d-label">
+                <span className="d-label-text">Categories</span>
+              </label>
+              {isPostDataLoaded && (
+                <MultiSelectTagDropdown
+                  loadOptions={promiseOptions}
+                  defaultValue={data.categories.map(categoryToOption)}
+                  onChange={(newValue: TCategoryOption[]) =>
+                    setCategories(newValue.map((item) => item.value))
+                  }
+                />
+              )}
+            </div>
+
             <div className="mb-5 mt-2">
               <label className="d-label">
                 <span className="d-label-text">Tags</span>
@@ -193,7 +231,7 @@ const EditPost = () => {
                   onChange={(newValue) =>
                     setTags(newValue.map((item) => item.value))
                   }
-                  className="relative z-20"
+                  className="relative z-[15]"
                 />
               )}
             </div>

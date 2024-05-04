@@ -63,12 +63,10 @@ const routes: RouteObject[] = [
           {
             element: <Categories />,
             path: "categories/manage",
-            children: [
-              {
-                element: <EditCategories />,
-                path: "edit/:slug",
-              },
-            ],
+          },
+          {
+            element: <EditCategories />,
+            path: "categories/edit/:slug",
           },
           {
             element: <Users />,
