@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { FaArrowRight } from "react-icons/fa";
 
 import ArticleCard from "../../../components/ArticleCard";
@@ -26,7 +26,7 @@ const Articles = () => {
     <section className="flex flex-col container mx-auto px-5 py-10">
       <div className=" flex flex-wrap md:gap-x-5 gap-y-5 pb-10">
         {isLoading ? (
-          [...Array(3)].map((item, index) => (
+          [...Array(3)].map((_item, index) => (
             <ArticleCardSkeleton
               key={index}
               className="w-full md:w-[calc(50%-20px)] lg:w-[calc(33.33%-21px)]"

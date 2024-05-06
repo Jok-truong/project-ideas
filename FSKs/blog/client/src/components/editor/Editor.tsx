@@ -7,7 +7,6 @@ import Italic from "@tiptap/extension-italic";
 import Strike from "@tiptap/extension-strike";
 import Code from "@tiptap/extension-code";
 import History from "@tiptap/extension-history";
-import MenuBar from "./MenuBar";
 
 type EditorProps = {
   onDataChange?: any;
@@ -42,8 +41,8 @@ const Editor = ({ onDataChange, content, editable }: EditorProps) => {
   });
 
   return (
-    <div className="w-full relative ">
-      {editable && <MenuBar editor={editor} />}
+    <div className={`${editable && "border rounded-lg my-3"} w-full relative`}>
+      {/* {editable && <MenuBar editor={editor} />} */}
       <EditorContent className="p-5 pt-0 my-5" editor={editor} />
     </div>
   );

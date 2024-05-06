@@ -24,6 +24,13 @@ const Pagination = ({
 
   let lastPage = paginationRange?.[paginationRange.length - 1];
 
+  const onNext = () => {
+    onPageChange(currentPage + 1);
+  };
+  const onPrevious = () => {
+    onPageChange(currentPage - 1);
+  };
+
   return (
     <div className="flex flex-col items-center px-5 py-5 bg-white xs:flex-row xs:justify-between">
       <div className="flex items-center">
@@ -31,7 +38,7 @@ const Pagination = ({
           disabled={currentPage === 1}
           type="button"
           className="w-full p-4 text-base text-gray-600 bg-white border rounded-l-xl hover:bg-gray-100 disabled:cursor-not-allowed disabled:opacity-60"
-          //  onClick={onPrevious}
+          onClick={onPrevious}
         >
           <svg
             width="9"
@@ -70,10 +77,10 @@ const Pagination = ({
         })}
 
         <button
-          //  disabled={currentPage === lastPage}
+          disabled={currentPage === lastPage}
           type="button"
           className="w-full p-4 text-base text-gray-600 bg-white border-t border-b border-r rounded-r-xl hover:bg-gray-100 disabled:cursor-not-allowed disabled:opacity-60"
-          //  onClick={onNext}
+          onClick={onNext}
         >
           <svg
             width="9"

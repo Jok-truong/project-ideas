@@ -66,7 +66,7 @@ const BlogPage = () => {
         />
         <div className="flex flex-wrap md:gap-x-5 gap-y-5 pb-10">
           {isLoading || isFetching ? (
-            [...Array(3)].map((item, index) => (
+            [...Array(3)].map((_item, index) => (
               <ArticleCardSkeleton
                 key={index}
                 className="w-full md:w-[calc(50%-20px)] lg:w-[calc(33.33%-21px)]"

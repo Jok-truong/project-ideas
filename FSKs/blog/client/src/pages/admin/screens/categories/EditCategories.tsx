@@ -40,7 +40,7 @@ const EditCategories = () => {
           token,
         });
       },
-      onSuccess: (data) => {
+      onSuccess: (_data) => {
         queryClient.invalidateQueries({ queryKey: ["categories", slug] });
         toast.success("Category is updated");
         navigate(`/admin/categories/manage`, {
