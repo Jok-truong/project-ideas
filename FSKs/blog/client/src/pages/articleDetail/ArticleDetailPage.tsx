@@ -7,8 +7,6 @@ import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import { useAppSelector } from "../../hooks";
 import { TUserState } from "../../types/user";
-import parseJsonToHtml from "../../utils";
-import { JSONContent } from "@tiptap/react";
 import BreadCrumbs from "../../components/BreadCrumbs";
 import stables from "../../constants/stables";
 import images from "../../constants/images";

@@ -66,7 +66,7 @@ const ManagePosts = () => {
       paginationConfig={postsData?.data?.config}
       titleForm="Create Post"
     >
-      {postsData?.data?.posts.map((post: TPost) => (
+      {postsData?.data?.posts?.map((post: TPost) => (
         <tr key={post._id}>
           <td className="p-5 text-sm bg-white border-b border-gray-200">
             <div className="flex items-center">

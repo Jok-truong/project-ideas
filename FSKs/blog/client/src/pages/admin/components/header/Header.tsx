@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import images from "../../../../constants/images";
 import { useState } from "react";
 import { AiFillDashboard, AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
@@ -6,15 +6,8 @@ import { FaComments, FaUser } from "react-icons/fa";
 import NavItem from "./NavItem";
 import NavItemCollapse from "./NavItemCollapse";
 import { MdDashboard } from "react-icons/md";
-import { useQueryClient } from "@tanstack/react-query";
-import { useAppSelector } from "../../../../hooks";
-import { TUserState } from "../../../../types/user";
 
 const Header = () => {
-  const navigate = useNavigate();
-  const userState = useAppSelector((state: TUserState) => state.user);
-  const queryClient = useQueryClient();
-
   const [isMenuActive, setIsMenuActive] = useState(false);
   const [activeNavName, setActiveNavName] = useState("dashboard");
 
