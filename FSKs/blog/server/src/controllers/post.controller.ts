@@ -130,9 +130,10 @@ export const getPost = async (req: Request, res: Response) => {
 export const getAllPosts = async (req: Request, res: Response) => {
   try {
     const filter = req.query['searchKeyword']
+
     const where: any = {}
     if (filter) {
-      where.email = { $regex: filter, $options: 'i' }
+      where.title = { $regex: filter, $options: 'i' }
     }
 
     const query = Post.find(where)
