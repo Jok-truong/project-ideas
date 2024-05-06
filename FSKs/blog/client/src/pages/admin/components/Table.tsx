@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Pagination from "../../../components/Pagination";
 import { createPortal } from "react-dom";
-import UpsertForm from "../../../components/CreationForm";
+import UpsertForm from "../../../components/UpsertForm";
 
 type TableProps = {
   children: React.ReactNode;

@@ -54,7 +54,7 @@ const NavItem = ({ item }: { item: INavItemInfo }) => {
             className={`lg:hidden transition-all duration-500 pt-4 lg:absolute lg:bottom-0 lg:right-0 lg:transform lg:translate-y-full lg:group-hover:block w-max 
             ${dropdown ? "block" : "hidden"}`}
           >
-            <ul className="bg-dark-soft lg:bg-transparent text-center flex flex-col shadow-lg rounded-lg overflow-hidden">
+            <ul className="bg-dark-soft lg:bg-white text-center flex flex-col shadow-lg rounded-lg overflow-hidden">
               {item.items?.map((page, index) => (
                 <Link
                   className="hover:bg-dark-hard hover:text-white px-4 py-2 text-white lg:text-dark-soft"
@@ -75,7 +75,7 @@ const NavItem = ({ item }: { item: INavItemInfo }) => {
 const Navbar = ({ navIsVisible }: { navIsVisible: boolean }) => {
   return (
     <div
-      className={`transition-all duration-300 mt-[56px] lg:mt-0 bg-[#cef2f7] lg:bg-transparent z-[49] flex flex-col w-full lg:w-auto justify-center lg:justify-end lg:flex-row fixed top-0 bottom-0 lg:static gap-x-9 items-center
+      className={`transition-all duration-300 mt-[56px] lg:mt-0 bg-[#cef2f7] lg:bg-white z-[49] flex flex-col w-full lg:w-auto justify-center lg:justify-end lg:flex-row fixed top-0 bottom-0 lg:static gap-x-9 items-center
           ${navIsVisible ? "right-0" : "-right-full"}
           `}
     >

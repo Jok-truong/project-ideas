@@ -78,7 +78,9 @@ export const updatePost = async (req: Request, res: Response) => {
 
 export const getPost = async (req: Request, res: Response) => {
   try {
-    const post = await Post.findOne({ slug: req.params.slug }).populate([
+    const post = await (
+      await Post.findOne({ slug: req.params.slug })
+    )?.populate([
       {
         path: 'user',
         select: ['avatar', 'name']
@@ -86,6 +88,31 @@ export const getPost = async (req: Request, res: Response) => {
       {
         path: 'categories',
         select: ['title']
+      },
+      {
+        path: 'comments',
+        match: {
+          check: true,
+          parent: null
+        },
+        populate: [
+          {
+            path: 'user',
+            select: ['avatar', 'name']
+          },
+          {
+            path: 'replies',
+            match: {
+              check: true
+            },
+            populate: [
+              {
+                path: 'user',
+                select: ['avatar', 'name']
+              }
+            ]
+          }
+        ]
       }
     ])
 

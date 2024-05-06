@@ -13,6 +13,8 @@ import Users from "./pages/admin/screens/users/Users";
 import ManagePosts from "./pages/admin/screens/posts/ManagePosts";
 import EditPost from "./pages/admin/screens/posts/EditPost";
 import ProfilePage from "./pages/profile/ProfilePage";
+import BlogPage from "./pages/blog/BlogPage";
+import ArticleDetailPage from "./pages/articleDetail/ArticleDetailPage";
 
 const Layout = () => {
   return (
@@ -30,15 +32,15 @@ const routes: RouteObject[] = [
     children: [
       {
         element: <LoginPage />,
-        path: "/login",
+        path: "login",
       },
       {
         element: <RegisterPage />,
-        path: "/register",
+        path: "register",
       },
       {
         element: <HomePage />,
-        path: "/",
+        path: "",
       },
       {
         element: <AdminLayout />,
@@ -76,7 +78,15 @@ const routes: RouteObject[] = [
       },
       {
         element: <ProfilePage />,
-        path: "/profile",
+        path: "profile",
+      },
+      {
+        element: <BlogPage />,
+        path: "blog/",
+      },
+      {
+        element: <ArticleDetailPage />,
+        path: "blog/:slug",
       },
     ],
   },

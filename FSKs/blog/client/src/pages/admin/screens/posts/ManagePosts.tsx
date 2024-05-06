@@ -63,7 +63,7 @@ const ManagePosts = () => {
       data={postsData?.data}
       setCurrentPage={setCurrentPage}
       currentPage={currentPage}
-      paginationConfig={postsData?.headers}
+      paginationConfig={postsData?.data?.config}
       titleForm="Create Post"
     >
       {postsData?.data?.posts.map((post: TPost) => (

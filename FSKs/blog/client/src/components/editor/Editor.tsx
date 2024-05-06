@@ -10,7 +10,7 @@ import History from "@tiptap/extension-history";
 import MenuBar from "./MenuBar";
 
 type EditorProps = {
-  onDataChange: any;
+  onDataChange?: any;
   content: any;
   editable: boolean;
 };
@@ -44,10 +44,7 @@ const Editor = ({ onDataChange, content, editable }: EditorProps) => {
   return (
     <div className="w-full relative ">
       {editable && <MenuBar editor={editor} />}
-      <EditorContent
-        className="p-5 pt-0 border rounded-lg my-5"
-        editor={editor}
-      />
+      <EditorContent className="p-5 pt-0 my-5" editor={editor} />
     </div>
   );
 };

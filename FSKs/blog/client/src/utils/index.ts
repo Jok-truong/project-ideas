@@ -1,4 +1,8 @@
 import { TCategoryOption } from "../types/postCategories";
+import { generateHTML } from "@tiptap/html";
+import parse from "html-react-parser";
+import { extensions } from "../constants/extensions";
+import { JSONContent } from "@tiptap/react";
 
 export const hasMessage = (x: unknown): x is { message: string } => {
   return Boolean(
@@ -26,3 +30,9 @@ export const filterCategories = (inputValue: string, categoriesData: any) => {
 
   return filteredOptions;
 };
+
+const parseJsonToHtml = (json: JSONContent) => {
+  return parse(generateHTML(json, extensions));
+};
+
+export default parseJsonToHtml;

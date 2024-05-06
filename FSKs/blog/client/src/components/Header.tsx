@@ -60,7 +60,7 @@ const Header = () => {
                
                   `}
                 >
-                  <ul className="bg-dark-soft lg:bg-transparent text-center flex flex-col shadow-lg rounded-lg overflow-hidden">
+                  <ul className="bg-dark-soft lg:bg-white text-center flex flex-col shadow-lg rounded-lg overflow-hidden">
                     {userState?.userInfo?.admin && (
                       <button
                         onClick={() => navigate("/admin")}
