@@ -8,8 +8,8 @@ import {
 } from "react";
 
 type TNavBar = {
-  intervalEvent: null;
-  scrolling: null;
+  intervalEvent: null | (() => void);
+  scrolling: null | boolean;
   scrollSizeY: null;
 };
 

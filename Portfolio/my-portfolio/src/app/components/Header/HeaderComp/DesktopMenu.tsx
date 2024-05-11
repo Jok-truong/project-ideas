@@ -6,7 +6,7 @@ type DesktopMenuProps = {
 };
 const DesktopMenu = ({ finishedLoading }: DesktopMenuProps) => {
   return (
-    <div className="font-mono text-xs md:flex hidden flex-row items-center space-x-8 ">
+    <div className="font-mono text-base md:flex hidden flex-row items-center space-x-8 ">
       <motion.div
         initial={{
           y: -40,
@@ -31,7 +31,7 @@ const DesktopMenu = ({ finishedLoading }: DesktopMenuProps) => {
           duration={200}
         >
           &gt; 01.{" "}
-          <span className="text-white hover:cursor-pointer hover:text-AAsecondary duration-300">
+          <span className="text-white text-lg hover:cursor-pointer hover:text-AAsecondary duration-300">
             About
           </span>
         </ReactScrollLink>
@@ -60,7 +60,7 @@ const DesktopMenu = ({ finishedLoading }: DesktopMenuProps) => {
           duration={200}
         >
           &gt; 02.{" "}
-          <span className="text-white  hover:cursor-pointer hover:text-AAsecondary duration-300">
+          <span className="text-white text-lg  hover:cursor-pointer hover:text-AAsecondary duration-300">
             Experience
           </span>
         </ReactScrollLink>
@@ -89,7 +89,7 @@ const DesktopMenu = ({ finishedLoading }: DesktopMenuProps) => {
           duration={200}
         >
           &gt; 03.{" "}
-          <span className="text-white  hover:cursor-pointer hover:text-AAsecondary duration-300">
+          <span className="text-white text-lg  hover:cursor-pointer hover:text-AAsecondary duration-300">
             Work
           </span>
         </ReactScrollLink>
@@ -118,7 +118,7 @@ const DesktopMenu = ({ finishedLoading }: DesktopMenuProps) => {
           duration={200}
         >
           &gt; 04.{" "}
-          <span className="text-white  hover:cursor-pointer hover:text-AAsecondary duration-300">
+          <span className="text-white text-lg  hover:cursor-pointer hover:text-AAsecondary duration-300">
             Contact
           </span>
         </ReactScrollLink>
