@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Link } from "react-scroll";
 
 type LogoProps = {
   finishedLoading: boolean;
@@ -6,7 +7,7 @@ type LogoProps = {
 
 export default function Logo({ finishedLoading }: LogoProps) {
   return (
-    <>
+    <Link to="myName" className="cursor-pointer">
       <motion.div
         initial={{ y: 0, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
@@ -49,6 +50,6 @@ export default function Logo({ finishedLoading }: LogoProps) {
           className="h-1 w-6 rounded bg-AAsecondary"
         ></motion.div>
       </motion.div>
-    </>
+    </Link>
   );
 }

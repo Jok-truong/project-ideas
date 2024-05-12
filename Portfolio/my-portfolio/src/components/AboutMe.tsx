@@ -1,18 +1,35 @@
 import ArrowIcon from "./Icons/ArrowIcon";
 import Img from "./SmallComp/Image/Img";
+import { motion } from "framer-motion";
 
 const technologies = [
   ["Next.js", "JavaScript (ES6+)", "Tailwind CSS", "ReactJS"],
   ["Graphql", "TypeScript", "Ant", "Python"],
 ];
 
-export default function AboutMe() {
+export default function AboutMe({
+  finishedLoading,
+}: {
+  finishedLoading: boolean;
+}) {
   return (
     <div
       id="aboutSection"
       className="snap-start flex flex-col  items-center py-20 bg-transparent"
     >
-      <div
+      <motion.div
+        initial={{ y: 10, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{
+          opacity: {
+            delay: finishedLoading ? 0 : 10.4,
+            duration: finishedLoading ? 0 : 0.2,
+          },
+          y: {
+            delay: finishedLoading ? 0 : 10.4,
+            duration: finishedLoading ? 0 : 0.2,
+          },
+        }}
         className="flex flex-col space-y-8 px-4 sm:px-0 w-full sm:w-[500px] 
         md:w-[700px] lg:w-[900px] "
       >
@@ -122,7 +139,7 @@ export default function AboutMe() {
             <div className="absolute w-48 h-full  bg-AAsecondary opacity-10 md:opacity-60  rounded overflow-hidden"></div>
           </div>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 }

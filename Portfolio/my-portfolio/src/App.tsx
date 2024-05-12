@@ -49,7 +49,7 @@ function App() {
         <Header finishedLoading={finishedLoading} />
         <MyName finishedLoading={finishedLoading} />
         <SocialMediaAround finishedLoading={finishedLoading} />
-        {finishedLoading && <AboutMe />}
+        {finishedLoading && <AboutMe finishedLoading={finishedLoading} />}
         {finishedLoading && <WhereIHaveWorked />}
         {finishedLoading && <SomethingIveBuilt />}
         {finishedLoading && <GetInTouch />}

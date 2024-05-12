@@ -194,7 +194,7 @@ const ThisCantBeReached = () => {
             be reached
           </span>
           <span className="text-gray-500 text-md">
-            <span className="font-bold">www.portfolio.com </span>
+            <span className="font-bold">www.truonglehuypf.netlify.app </span>
             unexpectedly{" "}
             {ShowText ? (
               <motion.span

@@ -9,6 +9,7 @@ type MyNameProps = {
 export default function MyName({ finishedLoading }: MyNameProps) {
   return (
     <div
+      id="myName"
       className="h-full flex justify-center
       px-8 2xl:px-72 xl:px-56 lg:px-32 md:px-28 sm:px-8 py-32 sm:py-52 z-10 flex-col-reverse lg:flex-row"
     >
