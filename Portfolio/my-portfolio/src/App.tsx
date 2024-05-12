@@ -10,6 +10,7 @@ import AboutMe from "./components/AboutMe.tsx";
 import WhereIHaveWorked from "./components/WhereIHaveWorked/index.tsx";
 import SomethingIveBuilt from "./components/SomethingIveBuilt.tsx";
 import GetInTouch from "./components/GetInTouch.tsx";
+import ScreenSizeDetector from "./components/ScreenSizeDetector.tsx";
 
 function App() {
   const context = useContext(AppContext);
@@ -52,7 +53,7 @@ function App() {
         {finishedLoading && <WhereIHaveWorked />}
         {finishedLoading && <SomethingIveBuilt />}
         {finishedLoading && <GetInTouch />}
-        {/* <ScreenSizeDetector /> */}
+        {finishedLoading && <ScreenSizeDetector />}
       </div>
     </main>
   );

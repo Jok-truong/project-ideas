@@ -30,7 +30,7 @@ const WhereIHaveWorked = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center py-24 space-y-12 bg-transparent">
+    <div className="flex flex-col items-center justify-center py-24 space-y-12 bg-AAprimary">
       <section className="flex flex-row items-center">
         <div className="flex flex-row items-center">
           <ArrowIcon
@@ -52,8 +52,7 @@ const WhereIHaveWorked = () => {
       justify-center md:justify-center items-center md:items-start "
       >
         <CompaniesBar setDescriptionJob={setDescriptionJob} />
-
-        <div className="w-[576px]">{GetDescription()}</div>
+        {GetDescription()}
       </section>
     </div>
   );
@@ -97,7 +96,7 @@ const CompaniesBar = ({
             companyNameBackgroundColorGreenDefault
           );
         }}
-        className={`flex-none sm:text-base text-xs text-center md:text-left  hover:text-AAsecondary
+        className={`flex-none sm:text-sm text-xs text-center md:text-left  hover:text-AAsecondary
              hover:bg-ResumeButtonHover rounded  font-mono  
              py-3 md:pl-6 md:px-4 md:w-44 w-32 duration-500
              ${
@@ -118,7 +117,7 @@ const CompaniesBar = ({
       id="WhereIhaveWorkedSection"
       className=" flex flex-col md:flex-row  w-screen lg:w-auto 
       overflow-auto scrollbar-hide md:overflow-hidden pb-4 md:pb-0 justify-start
-       sm:justify-center items-start sm:items-start"
+       sm:justify-center items-start sm:items-center"
     >
       <div
         className=" hidden md:block bg-gray-500 relative h-0.5 w-34 md:h-[132px] translate-y-1 md:w-0.5  

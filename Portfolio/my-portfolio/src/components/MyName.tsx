@@ -10,7 +10,7 @@ export default function MyName({ finishedLoading }: MyNameProps) {
   return (
     <div
       className="h-full flex justify-center
-      px-8 2xl:px-72 xl:px-56 lg:px-32 md:px-28 sm:px-8 py-32 sm:py-52 z-10 md:flex-col-reverse sm:flex-col-reverse md:items-center lg:flex-row"
+      px-8 2xl:px-72 xl:px-56 lg:px-32 md:px-28 sm:px-8 py-32 sm:py-52 z-10 flex-col-reverse lg:flex-row"
     >
       <div>
         <motion.span
@@ -61,7 +61,7 @@ export default function MyName({ finishedLoading }: MyNameProps) {
               duration: finishedLoading ? 0 : 0.2,
             },
           }}
-          className="text-gray-400 font-Header text-sm md:text-lg sm:text-md mt-10 tracking-wider"
+          className="text-gray-400 font-Header text-lg mt-10 tracking-wider"
         >
           I&apos;m a experienced{" "}
           <span className="text-AAsecondary">Front-End Developer</span>{" "}
@@ -95,7 +95,7 @@ export default function MyName({ finishedLoading }: MyNameProps) {
       {finishedLoading && (
         <motion.div
           variants={slideIn("right", "tween", 0.2, 1)}
-          className="h-[350px] md:h-[550px]  md:w-[25rem] lg:w-[40rem] px-3"
+          className="h-[350px] md:h-[550px]  md:w-[25rem] lg:w-[40rem]"
         >
           <EarthCanvas />
         </motion.div>
