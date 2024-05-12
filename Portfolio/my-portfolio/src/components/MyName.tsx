@@ -13,7 +13,7 @@ export default function MyName({ finishedLoading }: MyNameProps) {
       className="h-full flex justify-center
       px-8 2xl:px-72 xl:px-56 lg:px-32 md:px-28 sm:px-8 py-32 sm:py-52 z-10 flex-col-reverse lg:flex-row"
     >
-      <div>
+      <div className="w-full">
         <motion.span
           initial={{ y: 10, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}

@@ -53,7 +53,6 @@ function App() {
         {finishedLoading && <WhereIHaveWorked />}
         {finishedLoading && <SomethingIveBuilt />}
         {finishedLoading && <GetInTouch />}
-        {finishedLoading && <ScreenSizeDetector />}
       </div>
     </main>
   );
