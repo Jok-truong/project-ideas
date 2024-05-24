@@ -22,6 +22,7 @@ function SideNav() {
       teamId: "2",
     });
     setFileList(result);
+    setTotalFiles(result?.length);
   };
 
   const onFileCreate = (fileName: string) => {

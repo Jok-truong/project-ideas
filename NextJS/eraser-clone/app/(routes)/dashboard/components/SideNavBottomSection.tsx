@@ -21,6 +21,8 @@ type Props = {
 function SideNavBottomSection({ onFileCreate, totalFiles }: Props) {
   const [fileInput, setFileInput] = useState("");
 
+  console.log(totalFiles, "total");
+
   return (
     <>
       <Dialog>
@@ -62,9 +64,7 @@ function SideNavBottomSection({ onFileCreate, totalFiles }: Props) {
       <div className="h-4 w-full bg-gray-200 rounded-full mt-5">
         <div
           className="h-4 bg-blue-600 rounded-full"
-          style={{
-            width: `${(totalFiles / 5) * 100}`,
-          }}
+          style={{ width: `${(totalFiles / 5) * 100}%` }}
         />
         <h2 className="text-[12px] mt-3">
           <strong>{totalFiles}</strong> out of <strong>{MAX_FREE_FILE}</strong>{" "}
