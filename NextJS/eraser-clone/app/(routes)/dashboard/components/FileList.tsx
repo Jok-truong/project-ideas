@@ -1,4 +1,5 @@
 import { FileListContext } from "@/app/context/FileListContext";
+import { FileIData } from "@/app/types/File";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -11,22 +12,13 @@ import moment from "moment";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useContext } from "react";
-export interface FileItem {
-  archive: boolean;
-  createdBt: string;
-  document: string;
-  fileName: string;
-  teamId: string;
-  whiteboard: string;
-  _id: string;
-  _creationTime: number;
-}
 
 function FileList() {
   const router = useRouter();
 
-  const { fileList, setFileList } = useContext(FileListContext);
+  const { fileList } = useContext(FileListContext);
   const { user } = useKindeBrowserClient();
+
   return (
     <div className="mt-10">
       <div className="overflow-x-auto">
@@ -50,11 +42,11 @@ function FileList() {
 
           <tbody className="divide-y divide-gray-200">
             {fileList &&
-              fileList.map((file: FileItem) => (
+              fileList.map((file: FileIData) => (
                 <tr
                   key={file._id}
                   className="odd:bg-gray-50 cursor-pointer"
-                  onClick={() => router.push("")}
+                  onClick={() => router.push("/workspace/" + file._id)}
                 >
                   <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
                     {file.fileName}

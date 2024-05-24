@@ -29,7 +29,7 @@ function SideNavBottomSection({ onFileCreate, totalFiles }: Props) {
         <DialogTrigger className="w-full" asChild>
           <Button
             className="w-full bg-blue-600 
-      hover:bg-blue-700 justify-start mt-3"
+      hover:bg-blue-700 justify-start"
           >
             New File
           </Button>
@@ -66,12 +66,9 @@ function SideNavBottomSection({ onFileCreate, totalFiles }: Props) {
           className="h-4 bg-blue-600 rounded-full"
           style={{ width: `${(totalFiles / 5) * 100}%` }}
         />
-        <h2 className="text-[12px] mt-3">
+        <h2 className="text-[12px]">
           <strong>{totalFiles}</strong> out of <strong>{MAX_FREE_FILE}</strong>{" "}
           files used
-        </h2>
-        <h2 className="text-[12px] mt-1">
-          Upgrade your plan for unlimited access.
         </h2>
       </div>
     </>

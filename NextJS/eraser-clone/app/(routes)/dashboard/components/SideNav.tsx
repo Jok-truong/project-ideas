@@ -52,7 +52,12 @@ function SideNav() {
   }, [activeTeam]);
 
   return (
-    <div className="h-screen fixed w-72 border-r border-[1px] p-6 flex flex-col">
+    <div
+      className=" h-screen 
+    fixed w-72 borde-r border-[1px] p-6
+    flex flex-col
+    "
+    >
       <div className="flex-1">
         <SideNavTopSection
           user={user}
@@ -60,10 +65,13 @@ function SideNav() {
           setActiveTeam={(activeTeam: Team) => setActiveTeam(activeTeam)}
         />
       </div>
-      <SideNavBottomSection
-        totalFiles={totalFiles}
-        onFileCreate={onFileCreate}
-      />
+
+      <div>
+        <SideNavBottomSection
+          totalFiles={totalFiles}
+          onFileCreate={onFileCreate}
+        />
+      </div>
     </div>
   );
 }

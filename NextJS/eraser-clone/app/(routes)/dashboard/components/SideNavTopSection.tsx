@@ -11,11 +11,12 @@ import { api } from "@/convex/_generated/api";
 import { LogoutLink } from "@kinde-oss/kinde-auth-nextjs";
 
 import { useConvex } from "convex/react";
-import { ChevronDown, LogOut, Users } from "lucide-react";
+import { ChevronDown, LayoutGrid, LogOut, Users } from "lucide-react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Separator } from "@/components/ui/separator";
+import { Button } from "@/components/ui/button";
 interface Props {
   user: User | null;
   setActiveTeam: (value: Team) => void;
@@ -35,14 +36,13 @@ function SideNavTopSection({ user, setActiveTeam, activeTeam }: Props) {
   const router = useRouter();
   const convex = useConvex();
   const [teamList, setTeamList] = useState<Team[]>();
-  console.log(teamList, "teamList");
 
   const getTeamList = async () => {
     if (user && user.email) {
       const result = await convex.query(api.teams.getTeam, {
         email: user.email,
       });
-      console.log("TeamList", result);
+
       setTeamList(result);
       setActiveTeam(result[0]);
     }
@@ -65,7 +65,7 @@ function SideNavTopSection({ user, setActiveTeam, activeTeam }: Props) {
           <div className="flex items-center gap-3 hover:bg-slate-200 p-3 rounded-lg cursor-pointer">
             <Image src="/logo-1.png" alt="logo" width={40} height={40} />
             <h2 className="flex gap-2 items-center font-bold text-base">
-              {} <ChevronDown />
+              {activeTeam?.teamName} <ChevronDown />
             </h2>
           </div>
         </PopoverTrigger>
@@ -111,6 +111,15 @@ function SideNavTopSection({ user, setActiveTeam, activeTeam }: Props) {
           </>
         </PopoverContent>
       </Popover>
+      {/* All File Button  */}
+      <Button
+        variant="outline"
+        className="w-full justify-start
+          gap-2 font-bold mt-8 bg-gray-100"
+      >
+        <LayoutGrid className="h-5 w-5" />
+        All Files
+      </Button>
     </>
   );
 }
