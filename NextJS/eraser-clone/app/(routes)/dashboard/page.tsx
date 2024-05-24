@@ -5,6 +5,7 @@ import Header from "./components/Header";
 import { useConvex, useMutation } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import { useEffect } from "react";
+import FileList from "./components/FileList";
 
 function DashboardPage() {
   const convex = useConvex();
@@ -42,6 +43,7 @@ function DashboardPage() {
   return (
     <div className="p-8">
       <Header />
+      <FileList />
     </div>
   );
 }

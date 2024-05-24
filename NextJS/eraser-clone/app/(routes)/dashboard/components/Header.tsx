@@ -8,7 +8,6 @@ import Image from "next/image";
 
 function Header() {
   const { user, isLoading } = useKindeBrowserClient();
-  console.log(user, "user");
 
   if (isLoading) return <Skeleton />;
   return (
