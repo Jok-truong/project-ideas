@@ -1,11 +1,18 @@
+"use client";
 import { useTheme } from "next-themes";
-import { useCallback } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 const THEME_LIGHT = "light";
 const THEME_DARK = "dark";
 
 export const useThemeToggle = () => {
+  const [hydrated, setHydrated] = useState(false);
+
   const { resolvedTheme, setTheme } = useTheme();
+
+  useEffect(() => {
+    setHydrated(true);
+  }, []);
 
   const isDark = resolvedTheme === THEME_DARK;
 
@@ -17,5 +24,6 @@ export const useThemeToggle = () => {
     isDark,
     toggle,
     theme: resolvedTheme,
+    hydrated,
   };
 };

@@ -1,11 +1,13 @@
+"use client";
 import { useThemeToggle } from "@/hooks/useThemeToggle";
 import { Button, ButtonProps } from "../ui/button";
 import { cn } from "@/lib/utils";
 import { Moon, Sun } from "lucide-react";
 
 function ThemeToggle({ className, ...props }: ButtonProps) {
-  const { isDark, toggle } = useThemeToggle();
-
+  const { isDark, toggle, hydrated } = useThemeToggle();
+  // TODO: fix layout shift from hydration
+  if (!hydrated) return null;
   return (
     <Button
       variant="ghost"

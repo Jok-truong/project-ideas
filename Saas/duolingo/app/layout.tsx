@@ -4,6 +4,7 @@ import { sharedMetadata } from "@/config/metadata";
 import { fonts } from "@/config/fonts";
 
 import "./globals.css";
+import { ClerkProvider } from "@clerk/nextjs";
 
 export const metadata: Metadata = {
   ...sharedMetadata,
@@ -22,17 +23,30 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${fonts} flex flex-col font-sans`}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
+    <ClerkProvider
+      appearance={{
+        variables: {
+          fontSize: "0.875rem",
+          borderRadius: "0.5rem",
+          colorPrimary: "hsl(142, 71%, 45%)",
+        },
+      }}
+    >
+      <html lang="en">
+        <body
+          suppressHydrationWarning={true}
+          className={`${fonts} flex flex-col font-sans`}
         >
-          {children}
-        </ThemeProvider>
-      </body>
-    </html>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            {children}
+          </ThemeProvider>
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }
