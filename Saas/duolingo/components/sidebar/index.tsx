@@ -10,7 +10,7 @@ function Sidebar() {
     <div className="flex h-full flex-col justify-between pt-6">
       <nav className="flex flex-col gap-6 px-4 sm:max-lg:px-2">
         <Link
-          href="/learn"
+          href="/courses"
           className="focus-visible self-start rounded-xl max-sm:ml-4 sm:max-lg:self-center lg:ml-4"
         >
           <span className="hidden sm:max-lg:block">
