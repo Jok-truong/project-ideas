@@ -2,7 +2,7 @@ import UserProgress from "@/components/UserProgress";
 import MobileSheet from "@/components/mobile/MobileSheet";
 import Sidebar from "@/components/sidebar";
 import { PropsWithChildren, Suspense } from "react";
-import Loading from "./Loading";
+import Loading from "./loading";
 
 function MainLayout({ children }: PropsWithChildren) {
   return (
