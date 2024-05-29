@@ -3,14 +3,24 @@ import MobileSheet from "@/components/mobile/MobileSheet";
 import Sidebar from "@/components/sidebar";
 import { PropsWithChildren, Suspense } from "react";
 import Loading from "./loading";
+import { getUserProgress } from "@/db/queries/user";
 
-function MainLayout({ children }: PropsWithChildren) {
+const MainLayout = async ({ children }: PropsWithChildren) => {
+  const userProgressData = await getUserProgress();
+
+  const [userProgress] = await Promise.all([userProgressData]);
+
   return (
     <div className="flex flex-grow flex-col px-0 sm:flex-row">
       <header className="top-0 z-1 max-sm:sticky sm:w-20 lg:w-64">
         <div className="flex items-center justify-between border-b-2 border-primary-depth bg-primary p-2 text-primary-foreground/80 sm:hidden">
           <div className="mx-auto">
-            <UserProgress muted />
+            <UserProgress
+              activeCourse={userProgress?.activeCourse}
+              hearts={userProgress?.hearts}
+              points={userProgress?.points}
+              muted
+            />
           </div>
           <MobileSheet>
             <Sidebar />
@@ -25,6 +35,6 @@ function MainLayout({ children }: PropsWithChildren) {
       </main>
     </div>
   );
-}
+};
 
 export default MainLayout;

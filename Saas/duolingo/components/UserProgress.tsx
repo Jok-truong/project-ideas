@@ -1,10 +1,12 @@
+"use client";
 import Link from "next/link";
 import { Button } from "./ui/button";
 import Image from "next/image";
 import { InfinityIcon } from "lucide-react";
+import { courses } from "@/db/schema";
 
 type Props = {
-  activeCourse?: { title: string; img: string };
+  activeCourse?: typeof courses.$inferSelect | null;
   hearts?: number;
   points?: number;
   hasActiveSubscription?: boolean;
@@ -12,7 +14,7 @@ type Props = {
 };
 
 function UserProgress({
-  activeCourse = { title: "French", img: "/img/flags/fr.svg" },
+  activeCourse,
   hearts = 5,
   points = 100,
   hasActiveSubscription,
@@ -23,8 +25,12 @@ function UserProgress({
       <Button variant="ghost" asChild>
         <Link href="/courses">
           <Image
-            src={activeCourse.img}
-            alt={activeCourse.title}
+            src={
+              activeCourse?.imageSrc
+                ? `./img/flags/${activeCourse?.imageSrc}`
+                : ""
+            }
+            alt={activeCourse?.title ?? ""}
             width={32}
             height={32}
             className="rounded-md border-2 border-border/80 dark:border-muted-foreground"

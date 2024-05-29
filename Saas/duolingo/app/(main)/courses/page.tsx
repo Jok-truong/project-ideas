@@ -1,5 +1,5 @@
 import { getCourses } from "@/db/queries/course";
-import List from "./components/List";
+import List from "./components/list";
 import { getUserProgress } from "@/db/queries/user";
 
 const CoursesPage = async () => {
