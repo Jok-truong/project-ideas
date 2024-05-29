@@ -1,7 +1,8 @@
 import UserProgress from "@/components/UserProgress";
 import MobileSheet from "@/components/mobile/MobileSheet";
 import Sidebar from "@/components/sidebar";
-import { PropsWithChildren } from "react";
+import { PropsWithChildren, Suspense } from "react";
+import Loading from "./Loading";
 
 function MainLayout({ children }: PropsWithChildren) {
   return (
@@ -20,7 +21,7 @@ function MainLayout({ children }: PropsWithChildren) {
         </div>
       </header>
       <main className="flex flex-1 flex-row gap-6 px-6 pb-24 pt-6 sm:pb-6 lg:gap-12">
-        {children}
+        <Suspense fallback={<Loading />}>{children}</Suspense>
       </main>
     </div>
   );

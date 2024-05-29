@@ -5,6 +5,7 @@ import { fonts } from "@/config/fonts";
 
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
+import { Toaster } from "@/components/ui/sonner";
 
 export const metadata: Metadata = {
   ...sharedMetadata,
@@ -37,6 +38,7 @@ export default function RootLayout({
           suppressHydrationWarning={true}
           className={`${fonts} flex flex-col font-sans`}
         >
+          <Toaster theme="light" richColors closeButton />
           <ThemeProvider
             attribute="class"
             defaultTheme="system"

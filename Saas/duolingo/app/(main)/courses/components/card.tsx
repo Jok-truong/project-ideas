@@ -14,6 +14,7 @@ type Props = {
 function Card({ title, id, imageSrc, onClick, disabled, isActive }: Props) {
   return (
     <div
+      onClick={() => onClick(id)}
       className={cn(
         "flex h-full min-h-[217px] min-w-[200px] cursor-pointer flex-col items-center justify-between rounded-xl border-2 border-b-[4px] p-3 pb-6 hover:bg-black/5 active:border-b-2",
         disabled && "pointer-events-none opacity-50"
