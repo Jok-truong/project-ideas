@@ -62,6 +62,27 @@ const main = async () => {
         description: "Learn the basics of Spanish",
         order: 1,
       },
+      {
+        id: 2,
+        courseId: 1, // Spanish
+        title: "Unit 2",
+        description: "Learn the basics of Spanish 2",
+        order: 1,
+      },
+      {
+        id: 3,
+        courseId: 1, // Spanish
+        title: "Unit 3",
+        description: "Learn the basics of Spanish 3",
+        order: 1,
+      },
+      {
+        id: 4,
+        courseId: 2, // Italian
+        title: "Unit 1",
+        description: "Learn the basics of Italian ",
+        order: 1,
+      },
     ]);
 
     await db.insert(schema.lessons).values([
