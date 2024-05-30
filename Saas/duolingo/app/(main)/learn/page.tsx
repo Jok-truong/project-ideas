@@ -4,13 +4,24 @@ import UserProgress from "@/components/UserProgress";
 import { getUserProgress } from "@/db/queries/user";
 import { redirect } from "next/navigation";
 import { Header } from "./components/header";
+import { getUnits } from "@/db/queries/unit";
+import Unit from "./components/unit";
+import { getCourseProgress } from "@/db/queries/course";
+import { lessons, units as unitsSchema } from "@/db/schema";
 
 const LearnPage = async () => {
   const userProgressData = await getUserProgress();
+  const unitsData = await getUnits();
+  const courseProgressData = await getCourseProgress();
 
-  const [userProgress] = await Promise.all([userProgressData]);
+  const [userProgress, units, courseProgress] = await Promise.all([
+    userProgressData,
+    unitsData,
+    courseProgressData,
+  ]);
+  console.log(courseProgress, "courseProgress");
 
-  if (!userProgress || !userProgress.activeCourse) {
+  if (!userProgress || !userProgress.activeCourse || !courseProgress) {
     redirect("/courses");
   }
 
@@ -25,7 +36,24 @@ const LearnPage = async () => {
       </StickyWrapper>
       <FeedWrapper>
         <Header title={userProgress.activeCourse.title} />
-        units
+        {units.map((unit) => (
+          <div key={unit.id}>
+            <Unit
+              id={unit.id}
+              order={unit.order}
+              description={unit.description}
+              title={unit.title}
+              lessons={unit.lessons}
+              activeLesson={
+                courseProgress.activeLesson as
+                  | (typeof lessons.$inferSelect & {
+                      unit: typeof unitsSchema.$inferSelect;
+                    })
+                  | undefined
+              }
+            />
+          </div>
+        ))}
       </FeedWrapper>
     </div>
   );
