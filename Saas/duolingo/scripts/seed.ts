@@ -252,6 +252,98 @@ const main = async () => {
         question: 'Which one of these is the "the robot"?',
       },
     ]);
+
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 4, // Which one of these is "the man"?
+        imageSrc: "man.svg",
+        correct: true,
+        text: "el hombre",
+        audioSrc: "/es_man.mp3",
+      },
+      {
+        challengeId: 4,
+        imageSrc: "woman.svg",
+        correct: false,
+        text: "la mujer",
+        audioSrc: "/es_woman.mp3",
+      },
+      {
+        challengeId: 4,
+        imageSrc: "robot.svg",
+        correct: false,
+        text: "el robot",
+        audioSrc: "/es_robot.mp3",
+      },
+    ]);
+
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 5, // "the man"?
+        correct: true,
+        text: "el hombre",
+        audioSrc: "/es_man.mp3",
+      },
+      {
+        challengeId: 5,
+        correct: false,
+        text: "la mujer",
+        audioSrc: "/es_woman.mp3",
+      },
+      {
+        challengeId: 5,
+        correct: false,
+        text: "el robot",
+        audioSrc: "/es_robot.mp3",
+      },
+    ]);
+
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 6, // Which one of these is the "the robot"?
+        imageSrc: "man.svg",
+        correct: false,
+        text: "el hombre",
+        audioSrc: "/es_man.mp3",
+      },
+      {
+        challengeId: 6,
+        imageSrc: "woman.svg",
+        correct: false,
+        text: "la mujer",
+        audioSrc: "/es_woman.mp3",
+      },
+      {
+        challengeId: 6,
+        imageSrc: "robot.svg",
+        correct: true,
+        text: "el robot",
+        audioSrc: "/es_robot.mp3",
+      },
+    ]);
+    await db.insert(schema.challenges).values([
+      {
+        id: 7,
+        lessonId: 3, // Verbs
+        type: "SELECT",
+        order: 1,
+        question: 'Which one of these is the "the man"?',
+      },
+      {
+        id: 8,
+        lessonId: 3, // Verbs
+        type: "ASSIST",
+        order: 2,
+        question: '"the man"',
+      },
+      {
+        id: 9,
+        lessonId: 3, // Verbs
+        type: "SELECT",
+        order: 3,
+        question: 'Which one of these is the "the robot"?',
+      },
+    ]);
     console.log("Seeding finished");
   } catch (error) {
     console.error(error);

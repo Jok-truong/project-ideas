@@ -19,8 +19,6 @@ type Props = {
 };
 
 function Unit({ title, description, lessons, activeLesson }: Props) {
-  console.log(lessons, "lession1");
-
   return (
     <>
       <UnitBanner title={title} description={description} />

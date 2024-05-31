@@ -19,7 +19,6 @@ const LearnPage = async () => {
     unitsData,
     courseProgressData,
   ]);
-  console.log(units, "units");
 
   if (!userProgress || !userProgress.activeCourse || !courseProgress) {
     redirect("/courses");

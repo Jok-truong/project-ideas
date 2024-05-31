@@ -6,6 +6,8 @@ import { fonts } from "@/config/fonts";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import { Toaster } from "@/components/ui/sonner";
+import ExitModal from "@/components/modals/useExitModal";
+import { HeartsModal } from "@/components/modals/useHeartsModal";
 
 export const metadata: Metadata = {
   ...sharedMetadata,
@@ -39,6 +41,8 @@ export default function RootLayout({
           className={`${fonts} flex flex-col font-sans`}
         >
           <Toaster theme="light" richColors closeButton />
+          <ExitModal />
+          <HeartsModal />
           <ThemeProvider
             attribute="class"
             defaultTheme="system"

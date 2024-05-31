@@ -28,7 +28,7 @@ function Card({ title, id, imageSrc, onClick, disabled, isActive }: Props) {
         )}
       </div>
       <Image
-        src={`./img/flags/${imageSrc}`}
+        src={`/img/flags/${imageSrc}`}
         alt={title}
         height={70}
         width={93.33}

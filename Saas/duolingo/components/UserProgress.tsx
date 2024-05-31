@@ -4,6 +4,7 @@ import { Button } from "./ui/button";
 import Image from "next/image";
 import { InfinityIcon } from "lucide-react";
 import { courses } from "@/db/schema";
+import { useSearchParams } from "next/navigation";
 
 type Props = {
   activeCourse?: typeof courses.$inferSelect | null;
@@ -20,6 +21,9 @@ function UserProgress({
   hasActiveSubscription,
   muted,
 }: Props) {
+  const searchParams = useSearchParams();
+  const isCompleted = searchParams.get("isCompleted") === "true";
+
   return (
     <div className="flex w-full items-center justify-between gap-x-2">
       <Button variant="ghost" asChild>
@@ -27,7 +31,7 @@ function UserProgress({
           <Image
             src={
               activeCourse?.imageSrc
-                ? `./img/flags/${activeCourse?.imageSrc}`
+                ? `/img/flags/${activeCourse?.imageSrc}`
                 : ""
             }
             alt={activeCourse?.title ?? ""}
@@ -67,7 +71,7 @@ function UserProgress({
             height={22}
             className="mr-2"
           />
-          {hasActiveSubscription ? (
+          {isCompleted || hasActiveSubscription ? (
             <InfinityIcon className="size-4" strokeWidth={3} />
           ) : (
             hearts

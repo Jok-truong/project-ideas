@@ -45,7 +45,10 @@ const LessonButton = ({ id, index, totalCount, locked, current }: Props) => {
 
   return (
     <Link
-      href={href}
+      href={{
+        pathname: href,
+        query: { isCompleted },
+      }}
       aria-disabled={locked}
       style={{ pointerEvents: locked ? "none" : "auto" }}
     >
