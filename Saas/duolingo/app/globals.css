@@ -49,11 +49,11 @@
     --popover: 140 6% 10%;
     --popover-foreground: 180 9% 98%;
     --primary: 142 71% 45%;
-    --primary-foreground: 120 9% 2%;
+    --primary-foreground: 51, 100%, 50%;
     --secondary: 198 93% 60%;
     --secondary-foreground: 240 9% 2%;
     --muted: 142 7% 29%;
-    --muted-foreground: 141 5% 48%;
+    --muted-foreground: 51, 100%, 50%;
     --accent: 142 71% 19%;
     --accent-foreground: 180 9% 98%;
     --highlight-depth: 327 87% 82%;

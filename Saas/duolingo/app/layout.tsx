@@ -8,6 +8,8 @@ import { ClerkProvider } from "@clerk/nextjs";
 import { Toaster } from "@/components/ui/sonner";
 import ExitModal from "@/components/modals/useExitModal";
 import { HeartsModal } from "@/components/modals/useHeartsModal";
+import { Suspense } from "react";
+import Loading from "@/components/loading";
 
 export const metadata: Metadata = {
   ...sharedMetadata,
@@ -49,7 +51,7 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            {children}
+            <Suspense fallback={<Loading />}>{children}</Suspense>
           </ThemeProvider>
         </body>
       </html>

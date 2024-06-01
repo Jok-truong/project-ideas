@@ -2,7 +2,7 @@ import UserProgress from "@/components/UserProgress";
 import MobileSheet from "@/components/mobile/MobileSheet";
 import Sidebar from "@/components/sidebar";
 import { PropsWithChildren, Suspense } from "react";
-import Loading from "./loading";
+import Loading from "../../components/loading";
 import { getUserProgress } from "@/db/queries/user";
 
 const MainLayout = async ({ children }: PropsWithChildren) => {

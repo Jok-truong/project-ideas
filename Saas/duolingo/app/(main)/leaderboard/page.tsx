@@ -39,7 +39,7 @@ const LeaderboardPage = async () => {
             height={90}
             width={90}
           />
-          <h1 className="text-center font-bold text-neutral-800 text-2xl my-6">
+          <h1 className="text-center font-bold    text-2xl my-6">
             Leaderboard
           </h1>
           <p className="text-muted-foreground text-center text-lg mb-6">
@@ -60,9 +60,7 @@ const LeaderboardPage = async () => {
                   src={userProgress.userImageSrc}
                 />
               </Avatar>
-              <p className="font-bold text-neutral-800 flex-1">
-                {userProgress.userName}
-              </p>
+              <p className="font-bold    flex-1">{userProgress.userName}</p>
               <p className="text-muted-foreground">{userProgress.points} XP</p>
             </div>
           ))}

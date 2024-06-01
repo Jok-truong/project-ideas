@@ -35,7 +35,7 @@ function Card({ title, id, imageSrc, onClick, disabled, isActive }: Props) {
         className="rounded-lg border object-cover drop-shadow-md"
       />
 
-      <p className="mt-3 text-center font-bold text-neutral-700">{title}</p>
+      <p className="mt-3 text-center font-bold  ">{title}</p>
     </div>
   );
 }

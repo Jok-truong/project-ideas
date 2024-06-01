@@ -12,7 +12,6 @@ const QuestsPage = async () => {
 
   const [userProgress] = await Promise.all([userProgressData]);
 
-  console.log(userProgress, "userProgress");
   if (!userProgress || !userProgress.activeCourse) {
     redirect("/courses");
   }
@@ -33,9 +32,7 @@ const QuestsPage = async () => {
             height={90}
             width={90}
           />
-          <h1 className="text-center font-bold text-neutral-800 text-2xl my-6">
-            Quests
-          </h1>
+          <h1 className="text-center font-bold    text-2xl my-6">Quests</h1>
           <p className="text-muted-foreground text-center text-lg mb-6">
             Complete quests by earning points!
           </p>
@@ -55,9 +52,7 @@ const QuestsPage = async () => {
                     height={40}
                   />
                   <div className="flex flex-col gap-y-2 w-full">
-                    <p className="text-neutral-700 text-xl font-bold">
-                      {quest.title}
-                    </p>
+                    <p className="  text-xl font-bold">{quest.title}</p>
                     <Progress value={progress} className="h-3" />
                   </div>
                 </div>
