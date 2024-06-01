@@ -17,8 +17,6 @@ const LeaderboardPage = async () => {
     leaderboardData,
   ]);
 
-  console.log(leaderboard, "leaderboard");
-
   if (!userProgress || !userProgress.activeCourse) {
     redirect("/courses");
   }

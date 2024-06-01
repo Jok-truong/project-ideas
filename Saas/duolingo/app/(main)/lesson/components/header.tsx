@@ -22,7 +22,7 @@ const Header = ({ hearts, percentage, hasActiveSubscription }: Props) => {
         onClick={open}
         className="text-slate-500 hover:opacity-75 transition cursor-pointer"
       />
-      <Progress value={percentage} className="border border-indigo-600" />
+      <Progress value={percentage} />
       <div className="text-rose-500 flex items-center font-bold">
         <Image
           src="/img/icons/heart.svg"
