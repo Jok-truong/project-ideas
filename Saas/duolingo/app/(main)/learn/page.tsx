@@ -8,6 +8,7 @@ import { getUnits } from "@/db/queries/unit";
 import Unit from "./components/unit";
 import { getCourseProgress } from "@/db/queries/course";
 import { lessons, units as unitsSchema } from "@/db/schema";
+import { Quests } from "@/components/Quests";
 
 const LearnPage = async () => {
   const userProgressData = await getUserProgress();
@@ -32,6 +33,7 @@ const LearnPage = async () => {
           hearts={userProgress.hearts}
           points={userProgress.points}
         />
+        <Quests points={userProgress.points} />
       </StickyWrapper>
       <FeedWrapper>
         <Header title={userProgress.activeCourse.title} />

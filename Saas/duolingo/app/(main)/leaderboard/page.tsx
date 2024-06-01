@@ -7,6 +7,7 @@ import { getTopTenUsers } from "@/db/queries/leaderBoard";
 import Image from "next/image";
 import { Separator } from "@/components/ui/separator";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
+import { Quests } from "@/components/Quests";
 
 const LeaderboardPage = async () => {
   const userProgressData = await getUserProgress();
@@ -28,6 +29,7 @@ const LeaderboardPage = async () => {
           hearts={userProgress.hearts}
           points={userProgress.points}
         />
+        <Quests points={userProgress.points} />
       </StickyWrapper>
       <FeedWrapper>
         <div className="w-full flex flex-col items-center">
