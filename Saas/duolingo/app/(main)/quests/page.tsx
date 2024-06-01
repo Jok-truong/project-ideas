@@ -30,7 +30,7 @@ export const quests = [
 ];
 
 const QuestsPage = async () => {
-  const userProgressData = getUserProgress();
+  const userProgressData = await getUserProgress();
 
   const [userProgress] = await Promise.all([userProgressData]);
 
