@@ -1,18 +1,22 @@
 "use client";
 
-import { challengeOptions, challenges, userSubscription } from "@/db/schema";
+import { challengeOptions, challenges } from "@/db/schema";
 import { useState, useTransition } from "react";
 import Header from "./header";
 import QuestionBubble from "./questionBubble";
 import Challenge from "./challenge";
 import Footer from "./footer";
-import { useAudio } from "react-use";
+import { useAudio, useWindowSize } from "react-use";
 import {
   reduceHearts,
   upsertChallengeProgress,
 } from "@/actions/challenge-progress";
 import { toast } from "sonner";
 import { useHeartsModal } from "@/store/useHeartsModal";
+import { useRouter } from "next/navigation";
+import Image from "next/image";
+import { ResultCard } from "./resultCard";
+import Confetti from "react-confetti";
 
 type Props = {
   initialLessonId: number;
@@ -31,9 +35,12 @@ const Quiz = ({
   initialLessonChallenges,
 }: Props) => {
   const { open: openHeartsModal } = useHeartsModal();
+  const { width, height } = useWindowSize();
+  const router = useRouter();
 
   const [pending, startTransition] = useTransition();
 
+  const [lessonId] = useState(initialLessonId);
   const [selectedOption, setSelectedOption] = useState<number>();
   const [status, setStatus] = useState<"correct" | "wrong" | "none">("none");
   const [hearts, setHearts] = useState(initialHearts);
@@ -46,6 +53,11 @@ const Quiz = ({
       (challenge) => !challenge.completed
     );
     return uncompletedIndex === -1 ? 0 : uncompletedIndex;
+  });
+
+  const [finishAudio] = useAudio({
+    src: "/audio/finish.mp3",
+    autoPlay: true,
   });
 
   const [correctAudio, _, correctControls] = useAudio({
@@ -141,7 +153,50 @@ const Quiz = ({
   };
 
   if (!challenge) {
-    return <>end</>;
+    return (
+      <div className="flex flex-col w-full h-full">
+        {finishAudio}
+        <Confetti
+          recycle={false}
+          numberOfPieces={500}
+          tweenDuration={10_000}
+          width={width}
+          height={height}
+        />
+        <div className="mx-auto flex h-full max-w-lg flex-col items-center justify-center gap-y-4 text-center lg:gap-y-8">
+          <Image
+            src="/img/finish.svg"
+            alt="Finish"
+            className="hidden lg:block"
+            height={100}
+            width={100}
+          />
+
+          <Image
+            src="/img/finish.svg"
+            alt="Finish"
+            className="block lg:hidden"
+            height={100}
+            width={100}
+          />
+
+          <h1 className="text-lg font-bold text-neutral-700 lg:text-3xl">
+            Great job! <br /> You&apos;ve completed the lesson.
+          </h1>
+
+          <div className="flex w-full items-center gap-x-4">
+            <ResultCard variant="points" value={challenges.length * 10} />
+            <ResultCard variant="hearts" />
+          </div>
+        </div>
+
+        <Footer
+          lessonId={lessonId}
+          status="completed"
+          onCheck={() => router.push("/learn")}
+        />
+      </div>
+    );
   }
 
   return (
