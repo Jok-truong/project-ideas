@@ -9,3 +9,7 @@ Welcome to the "Project Ideas" repository. This project was created with the aim
 Welcome to this list of project ideas for full-stack developers. Whether you're a beginner looking for practice or an experienced developer seeking new challenges, these ideas cover various domains and technologies.
 
 ## Web Development Projects
+- Personal Portfolio Website
+- Blogging Platform
+- Note Webapp
+- Replica Website
