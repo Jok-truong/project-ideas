@@ -29,7 +29,7 @@ const Card = ({
   shortcut,
   onClick,
 }: Props) => {
-  const [audio, _, controls] = useAudio({ src: `/audio${audioSrc}` || "" });
+  const [audio, _, controls] = useAudio({ src: `/audio/${audioSrc}` || "" });
 
   const handleClick = useCallback(() => {
     controls.play();
