@@ -2,7 +2,7 @@
 
 This project is a clone of Duolingo, built using modern web technologies. It features a comprehensive set of functionalities including an admin dashboard, Stripe integration for premium features, and SSO authentication with Google.
 
-Live Demo: https://note-app-holetex.netlify.app/
+Live Demo:  https://hling.vercel.app/
 
 ## Features
 
