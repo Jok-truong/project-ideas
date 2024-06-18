@@ -2,6 +2,8 @@ import dotenv from "dotenv";
 import express from "express";
 import cors from "cors";
 import mongoose from "mongoose";
+import tasksRoutes from "./routes";
+
 dotenv.config();
 
 const PORT = process.env.PORT;
@@ -23,6 +25,8 @@ mongoose
 const main = async () => {
   const app = express();
   app.use(cors());
+
+  app.use("/api", tasksRoutes);
 
   app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
 };
