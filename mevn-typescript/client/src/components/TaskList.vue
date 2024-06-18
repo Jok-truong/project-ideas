@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useRouter } from "vue-router";
-import { onMounted, ref, Ref } from "vue";
+import { onMounted, ref, type Ref } from "vue";
 import { getTasks } from "../services/TaskService";
 import type { Task } from "@/interfaces/Task";
 
