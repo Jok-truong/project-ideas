@@ -17,5 +17,5 @@ Welcome to this list of project ideas for full-stack developers. Whether you're 
 | Finance app |   `MERN` | [link](https://finance-o1lokey.netlify.app/) |
 | 3d-portfolio      |   `ReactJS`, `ThreeJS`, `Framer Motion`   | [link](https://3d-portfolio-okey.netlify.app/) |
 |  Note-app  |  `React`, `NodeJS`, `GraphQL`, `MongoDB`, `Firebase`   | [link](https://note-app-o1lkey.netlify.app/) |
-| Duolingo-clone |  `Nextjs`, `Clerk`, `Drizzle`, radix-ui`  | [link](https://hling.vercel.app/) |
+| Duolingo-clone |  `Nextjs`, `Clerk`, `Drizzle`, `radix-ui`  | [link](https://hling.vercel.app/) |
 | Eraser-clone |  `Nextjs`, `convex`, `kinde`, `radix-ui`   | [link](https://erasor-clone.vercel.app/) |
