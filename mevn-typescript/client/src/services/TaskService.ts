@@ -9,5 +9,8 @@ const axiosInstance: AxiosInstance = axios.create({
   },
 });
 
+export const getTasks = async (): Promise<AxiosResponse<Task[]>> =>
+  await axiosInstance.get("/tasks");
+
 export const createTask = async (task: Task): Promise<AxiosResponse> =>
   await axiosInstance.post("/tasks", task);
