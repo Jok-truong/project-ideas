@@ -1,8 +1,8 @@
 <script setup lang="ts">
-// import { defineProps } from 'vue'
-// defineProps<{
-//   msg: string
-// }>()
+import { defineProps } from 'vue'
+defineProps<{
+  isAuthenticated: boolean
+}>()
 </script>
 
 <template>
@@ -13,7 +13,7 @@
           <RouterLink to="/">JOK</RouterLink>
         </div>
 
-        <div class="menu-center flex space-x-12">
+        <div class="menu-center flex space-x-12" v-if="isAuthenticated">
           <RouterLink to="/feed">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -84,11 +84,24 @@
         </div>
 
         <div class="menu-right">
-          <img
-            class="rounded-full w-[50px] aspect-square"
-            src="https://taoanhdep.com/wp-content/uploads/2023/11/hinhnen-jk.jpg"
-            alt="user"
-          />
+          <template v-if="isAuthenticated">
+            <RouterLink to="/">
+              <img
+                class="rounded-full w-[50px] aspect-square"
+                src="https://taoanhdep.com/wp-content/uploads/2023/11/hinhnen-jk.jpg"
+                alt="user"
+              />
+            </RouterLink>
+          </template>
+
+          <template v-else>
+            <RouterLink to="/login" class="mr-4 py-4 px-6 bg-gray-600 text-white rounded-lg"
+              >Log in</RouterLink
+            >
+            <RouterLink to="/signup" class="py-4 px-6 bg-purple-600 text-white rounded-lg"
+              >Sign up</RouterLink
+            >
+          </template>
         </div>
       </div>
     </div>

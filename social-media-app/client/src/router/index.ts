@@ -4,10 +4,22 @@ import FeedView from '../views/FeedView.vue'
 import ChatView from '../views/ChatView.vue'
 import NotificationsView from '../views/NotificationsView.vue'
 import SearchView from '../views/SearchView.vue'
+import SignupView from '../views/SignupView.vue'
+import LoginView from '@/views/LoginView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
+    {
+      path: '/signup',
+      name: 'signup',
+      component: SignupView
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: LoginView
+    },
     {
       path: '/',
       name: 'home',
