@@ -20,3 +20,4 @@ Welcome to this list of project ideas for full-stack developers. Whether you're 
 | Duolingo-clone |  `Nextjs`, `Clerk`, `Drizzle`, `radix-ui`  | [link](https://hling.vercel.app/) |
 | Eraser-clone |  `Nextjs`, `convex`, `kinde`, `radix-ui`   | [link](https://erasor-clone.vercel.app/) |
 | Mevn-typescript |  `MEVN`   | [link](https://mevn-typescript.netlify.app/) |
+| Mevn-typescript |  `vue`, `Django`   |  |
